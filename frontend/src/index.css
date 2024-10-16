@@ -1,7 +1,17 @@
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f4f4f9; /* Light background for the body */
+  color: #333; /* Darker text color for readability */
+}
+
 /* Navbar styles */
 .navbar {
-  background-color: #333;
-  color: white;
+  background-color: #333; /* Dark background for navbar */
+  color: white; /* Text color */
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -9,34 +19,80 @@
 }
 
 .navbar-links {
-  list-style: none;
+  list-style: none; /* Remove default list styling */
   display: flex;
-  gap: 20px;
+  gap: 20px; /* Space between links */
+}
+
+.navbar-links li {
+  position: relative; /* For hover effect */
 }
 
 .navbar-links li a {
-  color: white;
-  text-decoration: none;
+  color: white; /* Link color */
+  text-decoration: none; /* Remove underline */
+  padding: 10px 15px; /* Padding around the links */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  border-radius: 5px; /* Rounded corners */
 }
 
 .navbar-links li a:hover {
-  text-decoration: underline;
+  background-color: #ff6600; /* Background color on hover */
+  color: white; /* Change text color on hover */
+  text-decoration: none; /* Ensure no underline on hover */
 }
 
-/* Footer styles */
+
+/* Header Section */
+header {
+  background-color: #5f9ea0; /* Cool teal for the header */
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: black; 
+}
+
+header p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+header a {
+  background-color: #ff6600; /* Bright orange for call-to-action button */
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-decoration: none;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+header a:hover {
+  background-color: #e65c00; /* Slightly darker orange on hover */
+}
+
+/* Footer Styles */
 .footer {
-  background-color: #222;
+  background-color: #2C3E50; /* Deep blue color */
   color: white;
   padding: 2rem;
   text-align: center;
   position: relative;
   bottom: 0;
   width: 100%;
+  margin-top: 50px;
 }
 
 .footer-links {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-links li {
@@ -47,22 +103,68 @@
 .footer-links li a {
   color: white;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .footer-links li a:hover {
   text-decoration: underline;
 }
 
-/* Map styles */
-.map-container {
+/* Main Content */
+.main {
   padding: 20px;
   text-align: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #4CAF50; /* Match the navbar color */
+}
+
+p {
+  font-size: 1.1rem;
+  margin: 20px 0;
+  color: #555;
+}
+
+/* Highlights Section */
+.highlights {
+  display: flex;
+  justify-content: space-around;
+  margin: 50px 0;
+}
+
+.highlight-box {
+  background-color: #e9ecef;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.highlight-box h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.highlight-box p {
+  color: #555;
+}
+
+.highlight-box:hover {
+  transform: translateY(-5px);
+  transition: 0.3s ease-in-out;
+}
+
+/* Map Section */
+.map-container {
+  padding: 50px 0;
+  background-color: #f1f1f1; /* Light grey for the map section */
 }
 
 .map {
   width: 600px;
   height: 400px;
-  background-image: url('C:\Users\Dell\Desktop\2024\October\bah_vihan_v1\AmusementPark\frontend\assets\map.jpg'); /* Replace with your map image */
   background-size: cover;
   position: relative;
   margin: 0 auto;
@@ -81,4 +183,21 @@
 
 .map-marker:hover {
   background-color: darkred;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .highlights {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .highlight-box {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .map {
+    width: 100%;
+  }
 }

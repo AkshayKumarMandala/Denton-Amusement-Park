@@ -8,8 +8,19 @@ def add_initial_services():
     services = [
         {'name': 'Wheelchair-Friendly Pathways', 'description': 'Accessible paths throughout the park for wheelchair users.'},
         {'name': 'Sensory-Friendly Zones', 'description': 'Quiet and comfortable areas for visitors with sensory sensitivities.'},
-        {'name': 'Inclusive Rides', 'description': 'Fun rides that accommodate visitors with different abilities.'},
-        {'name': 'Assistive Technologies', 'description': 'Technology support such as audio assistance and visual guides.'}
+        {'name': 'Clear Signage', 'description': 'High-contrast signs with Braille and symbols for navigation.'},
+        {'name': 'Assistive Technologies', 'description': 'Audio assistance and visual guides available throughout the park.'},
+        {'name': 'Priority Access', 'description': 'Priority entry for visitors with disabilities.'},
+        {'name': 'Inclusive Play Areas', 'description': 'Play areas designed for children of all abilities.'},
+        {'name': 'Adaptive Seating', 'description': 'Variety of seating options for comfort.'},
+        {'name': 'Accessible Rides', 'description': 'Rides designed for easy access and safety.'},
+        {'name': 'Rest Areas', 'description': 'Planned rest areas for relaxation.'},
+        {'name': 'Emergency Services Accessibility', 'description': 'Trained medical staff for emergency services.'},
+        {'name': 'Chat / Audio Call', 'description': 'Assistance available through chat or audio call.'},
+        {'name': 'Service Animal Facilities', 'description': 'Facilities to accommodate service animals.'},
+        {'name': 'Restroom Accessibility', 'description': 'Accessible restrooms and changing facilities.'},
+        {'name': 'Temperature Controlled Environments', 'description': 'Safe areas for temperature-sensitive individuals.'},
+        {'name': 'Accessible Transportation', 'description': 'Transportation options available for all visitors.'}
     ]
     
     for service_data in services:
@@ -20,12 +31,17 @@ def add_initial_services():
     
     return jsonify({'message': 'Initial services added successfully!'}), 201
 
-# Route for getting all services
 @app.route('/api/services', methods=['GET'])
 def get_services():
-    services = Service.query.all()
-    result = [{'id': service.id, 'name': service.name, 'description': service.description} for service in services]
-    return jsonify(result)
+    try:
+        services = Service.query.all()  # Assuming you have a Service model
+        return jsonify([{
+            'id': service.id,
+            'name': service.name,
+            'description': service.description
+        } for service in services]), 200
+    except Exception as e:
+        return jsonify({'message': 'Error fetching services', 'error': str(e)}), 500
 
 # Route for adding feedback
 @app.route('/api/feedback', methods=['POST'])
@@ -69,7 +85,6 @@ def login_user():
         return jsonify({'message': 'Invalid credentials'}), 401
 
     return jsonify({'message': 'Login successful', 'user_id': user.id}), 200
-
 
 # Route to add a visitor
 @app.route('/api/visitors', methods=['POST'])

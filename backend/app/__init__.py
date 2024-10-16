@@ -1,18 +1,16 @@
 from flask import Flask
-from app.routes import setup_routes
-from app.utils import initialize_db
+from flask_cors import CORS
+from app.models import db
+from app.routes import api  # Import your routes
 
 def create_app():
     app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database.db'  # Update with your DB config
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    # Load configuration
-    app.config.from_pyfile('../config.py')
+    CORS(app)  # Enable CORS for all routes
 
-    # Initialize the database
-    initialize_db(app)
-
-    # Register routes
-    setup_routes(app)
+    db.init_app(app)  # Initialize your database
+    app.register_blueprint(api)  # Register the API blueprint
 
     return app
-

@@ -1,5 +1,5 @@
 Flask
 Flask-SQLAlchemy
-Flask-Cors
-mysql-connector-python
-PyMySQL  # MySQL connector for SQLAlchemy
+Flask-CORS
+flask-cors
+

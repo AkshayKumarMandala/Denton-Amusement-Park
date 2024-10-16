@@ -5,19 +5,20 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import AdminDashboard from './pages/AdminDashboard';
 import VisitorDashboard from './pages/VisitorDashboard';
+import FeedbackForm from './components/FeedbackForm';
+import AdminFeedbacks from './components/AdminFeedbacks';
+import Services from './pages/Services';
 
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/visitor" element={<VisitorDashboard />} />
-        </Routes>
-        <Footer />
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/feedbacks" element={<AdminFeedbacks />} />
+        <Route path="/feedback" element={<FeedbackForm />} />
+      </Routes>
     </Router>
   );
 };

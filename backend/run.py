@@ -1,13 +1,6 @@
-from app import app, db
-from flask_cors import CORS
+from app import create_app
 
-# Enable CORS for all routes
-CORS(app)
+app = create_app()
 
 if __name__ == '__main__':
-    # Push application context before creating tables
-    with app.app_context():
-        db.create_all()  # Creates the tables based on models
-    
-    app.run(debug=True)
-
+    app.run(debug=True, port=5000)  # Run on port 5000
