@@ -1,10 +1,10 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Map from './components/Map';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Services from './pages/Services';
+import AdminDashboard from './pages/AdminDashboard';
+import VisitorDashboard from './pages/VisitorDashboard';
 
 const App: React.FC = () => {
   return (
@@ -13,9 +13,9 @@ const App: React.FC = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/visitor" element={<VisitorDashboard />} />
         </Routes>
-        <Map />
         <Footer />
       </div>
     </Router>
