@@ -1,12 +1,16 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from app.models import db
+from app.routes import api  # Import your routes
 
-app = Flask(__name__)
-CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Pass@localhost/denton_amusement'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+def create_app():
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database.db'  # Update with your DB config
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
+    CORS(app)  # Enable CORS for all routes
 
-from app import routes
+    db.init_app(app)  # Initialize your database
+    app.register_blueprint(api)  # Register the API blueprint
+
+    return app
