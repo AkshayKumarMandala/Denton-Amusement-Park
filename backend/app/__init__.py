@@ -1,12 +1,18 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
+from app.routes import setup_routes
+from app.utils import initialize_db
 
-app = Flask(__name__)
-CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Pass@localhost/denton_amusement'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+def create_app():
+    app = Flask(__name__)
 
-db = SQLAlchemy(app)
+    # Load configuration
+    app.config.from_pyfile('../config.py')
 
-from app import routes
+    # Initialize the database
+    initialize_db(app)
+
+    # Register routes
+    setup_routes(app)
+
+    return app
+
